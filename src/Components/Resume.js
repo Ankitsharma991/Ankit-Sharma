@@ -1,33 +1,34 @@
 import React, { useState } from "react";
 import { BsDownload } from "react-icons/bs";
 import pdf from "../Resume.pdf";
-import { pdfjs, Document, Page } from "react-pdf";
-
+// import { Document, Page, pdfjs } from 'react-pdf';
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
-
-// Set workerSrc globally
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+// pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 const Resume = () => {
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [wid, setwid] = useState(window.innerWidth);
 
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
+  const handleResize = () => {
+    setwid(window.innerWidth);
+    console.log(wid);
+  };
+
+  window.addEventListener("load", handleResize);
+  window.addEventListener("resize", handleResize);
 
   return (
     <div className="ResumePage">
-      <Document
-        file={pdf}
-        className="resumeView"
-        onLoadSuccess={onDocumentLoadSuccess}
-      >
-        <Page pageNumber={pageNumber} />
-      </Document>
+      {/* <Document file={pdf} className="resumeview">
+          <Page pageNumber= {1} scale={wid<700 ? ( wid>475? 0.7: 0.5): 1}/>
+      </Document> */}
 
-      <a href={pdf} target="_blank" download="Ankit's Resume" rel="noreferrer">
+      <a
+        href={pdf}
+        target="_blank"
+        download="Devansh's Resume"
+        rel="noreferrer"
+      >
         <button className="downloadCV" type="button">
           <h3>
             <BsDownload />

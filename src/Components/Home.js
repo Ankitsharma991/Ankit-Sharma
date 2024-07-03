@@ -16,13 +16,17 @@ const Home = () => {
           </h1>
           <Typed />
         </div>
-
-        <img
-          src={IMAGE}
-          alt="Ankit Sharma"
-          style={{ backgroundColor: "rgba(0,0,0,0.1)", borderTopLeftRadius:100, borderTopRightRadius:10 }}
-        />
-      </div>
+          <img
+            src={IMAGE}
+            className="profileImage"
+            alt="Ankit Sharma"
+            style={{
+              backgroundColor: "rgba(0,0,0,0.1)",
+              borderTopLeftRadius: 50,
+              borderTopRightRadius: 10,
+            }}
+          />
+        </div>
 
       <div className="AboutPage">
         <div className="AboutText">
